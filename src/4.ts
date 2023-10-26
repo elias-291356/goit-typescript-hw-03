@@ -39,27 +39,27 @@ class Key {
 class Person {
   private key: Key;
 
-  constructor() {
-    this.key = new Key();
+  constructor(key: Key) {
+    this.key = key;
   }
 
-  getKeySignature(): string {
-    return this.key.getSignature();
+  getKey(): Key {
+    return this.key;
   }
 }
 
 class House {
-  protected door: false | true = false;
+  protected door: boolean = false;
   protected key: Key;
-  protected tenants: string[] = [];
+  protected tenants: Person[] = [];
 
-  constructor() {
-    this.key = new Key();
+  constructor(key: Key) {
+    this.key = key;
   }
 
-  comeIn(tenant: Person) {
+  comeIn(person: Person): void {
     if (this.door) {
-      this.tenants.push(tenant.getKeySignature());
+      this.tenants.push(person);
     }
   }
 }
